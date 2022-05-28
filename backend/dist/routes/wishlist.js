@@ -18,7 +18,8 @@ var _express = require("express");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = (0, _express.Router)();
-router.get("/recent", _wishlistController.default.find);
-router.post("/recent", _wishlistController.default.register);
+router.get("/", _wishlistController.default.find);
+router.post("/", _wishlistController.default.register);
+router.get("/:id", _wishlistController.default.findByIdController);
 var _default = router;
 exports.default = _default;

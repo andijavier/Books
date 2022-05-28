@@ -3,7 +3,8 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/recent", WishlistController.find);
-router.post("/recent", WishlistController.register);
+router.get("/", WishlistController.find);
+router.post("/", WishlistController.register);
+router.get("/:id", WishlistController.findByIdController);
 
 export default router;

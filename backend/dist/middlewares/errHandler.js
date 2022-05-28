@@ -15,7 +15,7 @@ function errHandler(err, req, res, next) {
       message: "Not Found"
     });
   } else if (err.name === "bad request") {
-    res.status(401).json({
+    res.status(400).json({
       message: err.message
     });
   } else {

@@ -3,23 +3,22 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Masonry from "@mui/lab/Masonry";
-import {
-  fetchBooksAsync,
-  selectBooks,
-  selectStatusBooks,
-} from "../store/books";
 import Navbar from "../components/Navbar";
 import CardMUI from "../components/CardMUI";
+import {
+  fetchWishlistsAsync,
+  selectStatusWishlists,
+  selectWishlists,
+} from "../store/wishlists";
 
-function BookList() {
-  const query = useLocation().search?.split("=")[1];
+function Wishlists() {
   const dispatch = useDispatch();
-  const books = useSelector(selectBooks);
-  const statusbooks = useSelector(selectStatusBooks);
+  const books = useSelector(selectWishlists);
+  const statusbooks = useSelector(selectStatusWishlists);
 
   useEffect(() => {
-    dispatch(fetchBooksAsync(query));
-  }, [query]);
+    dispatch(fetchWishlistsAsync());
+  }, []);
 
   return (
     <>
@@ -41,4 +40,4 @@ function BookList() {
   );
 }
 
-export default BookList;
+export default Wishlists;

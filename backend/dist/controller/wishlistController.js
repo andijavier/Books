@@ -165,6 +165,45 @@ var WishlistController = /*#__PURE__*/function () {
 
       return find;
     }()
+  }, {
+    key: "findByIdController",
+    value: function () {
+      var _findByIdController = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res, next) {
+        var id, isAlreadyExist;
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                id = req.params.id;
+                _context3.next = 4;
+                return (0, _wishlist.findById)(id);
+
+              case 4:
+                isAlreadyExist = _context3.sent;
+                res.status(200).json(isAlreadyExist);
+                _context3.next = 11;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+                next(_context3.t0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 8]]);
+      }));
+
+      function findByIdController(_x7, _x8, _x9) {
+        return _findByIdController.apply(this, arguments);
+      }
+
+      return findByIdController;
+    }()
   }]);
 
   return WishlistController;

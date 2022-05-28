@@ -3,8 +3,8 @@ import { fetchBooks } from "./booksAPI";
 
 export const fetchBooksAsync = createAsyncThunk(
   "books/fetchBooks",
-  async () => {
-    const response = await fetchBooks();
+  async (keyword) => {
+    const response = await fetchBooks(keyword);
     return response.items;
   }
 );

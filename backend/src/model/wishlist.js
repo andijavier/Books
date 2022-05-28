@@ -7,11 +7,11 @@ const wishlistSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-    collection: "wishlists",
+    collection: "wishlist",
   }
 );
 
-export const Wishlists = mongoose.model("wishlists", wishlistSchema);
+export const Wishlists = mongoose.model("wishlist", wishlistSchema);
 
 export const register = async (payload) => {
   return await Wishlists.create({

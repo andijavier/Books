@@ -60,10 +60,10 @@ var wishlistSchema = new _mongodb.default.Schema({
   volumeInfo: Object
 }, {
   timestamps: true,
-  collection: "wishlists"
+  collection: "wishlist"
 });
 
-var Wishlists = _mongodb.default.model("wishlists", wishlistSchema);
+var Wishlists = _mongodb.default.model("wishlist", wishlistSchema);
 
 exports.Wishlists = Wishlists;
 

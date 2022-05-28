@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import recentReducer from "./recent";
 import booksReducer from "./books";
+import wishlistsReducer from "./wishlists";
 
 export const store = configureStore({
   reducer: {
-    recent: recentReducer,
     books: booksReducer,
+    wishlists: wishlistsReducer,
   },
 });

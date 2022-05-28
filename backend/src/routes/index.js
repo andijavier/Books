@@ -5,6 +5,6 @@ import routerWishlist from "./wishlist";
 const router = Router();
 
 router.use("/recent", routerRecent);
-router.use("/wishlist", routerWishlist);
+router.use("/wishlists", routerWishlist);
 
 export default router;
