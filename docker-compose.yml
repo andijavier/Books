@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  travelio-database:
+    container_name: travelio-database
+    image: mongo:5.0.4
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - travelio-network
+    restart: unless-stopped
+
+  travelio-backend:
+    container_name: travelio-backend
+    build: 
+      context: ./backend
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URI=mongodb://travelio-database:27017/travelioTest
+      - MONGO_USERNAME=admin
+      - MONGO_PASSWORD=admin
+      - TOKEN_SECRET=TOKEN_SECRET
+    networks:
+      - travelio-network
+    restart: unless-stopped
+    depends_on:
+      - travelio-database
+
+  travelio-frontend:
+    container_name: travelio-frontend
+    build: 
+      context: ./frontend/app
+      args:
+        - API_BASE_URL=http://localhost/api
+    ports:
+      - 8080:8080
+    networks:
+      - travelio-network
+    restart: unless-stopped
+    depends_on:
+      - travelio-database
+      - travelio-backend
+
+  web-server:
+    container_name: web-server
+    image: nginx:1.20
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - travelio-network
+    restart: unless-stopped
+    depends_on:
+      - travelio-database
+      - travelio-backend
+      - travelio-frontend
+
+networks:
+  travelio-network:
+    name: travelio-network
+
+volumes:
+  mongodb:

@@ -1,6 +1,6 @@
 export async function fetchWishlists() {
   try {
-    const response = await fetch("http://localhost:3000/wishlists");
+    const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/wishlists`);
     return response.json();
   } catch (err) {
     console.log(err);
@@ -9,7 +9,7 @@ export async function fetchWishlists() {
 
 export async function findById(id) {
   try {
-    const response = await fetch("http://localhost:3000/wishlists/" + id);
+    const response = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/wishlists/${id}`);
     return response.json();
   } catch (err) {
     console.log(err);
@@ -27,7 +27,7 @@ export async function addWishlists(payload) {
       }),
     };
     const response = await fetch(
-      "http://localhost:3000/wishlists",
+      `${import.meta.env.VITE_APP_BASE_URL}/wishlists`,
       requestOptions
     );
     return response.json();
